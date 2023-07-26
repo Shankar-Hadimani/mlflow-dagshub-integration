@@ -78,6 +78,11 @@ if __name__ == "__main__":
         predictions = lr.predict(train_x)
         signature = infer_signature(train_x, predictions)
 
+
+        ### For remote server on DagsHub
+        REMOTE_SERVER_MLFLOW_TRACKING_URI="https://dagshub.com/shankar.hadimani/mlflow-github-dagshub-integration-test.mlflow"
+        mlflow.set_tracking_uri(REMOTE_SERVER_MLFLOW_TRACKING_URI)
+
         tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
 
         # Model registry does not work with file store
